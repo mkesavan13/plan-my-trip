@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play My Trip - Your Journey Starts Here</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Navigation Header -->
+        <header class="home-header">
+            <div class="nav-content">
+                <div class="logo-nav">
+                    <h1>Play My Trip</h1>
+                </div>
+                <nav class="main-nav">
+                    <a href="#destinations">Destinations</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <button id="login-trigger" class="login-trigger-btn">Login</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Discover Your Next Adventure</h1>
+                <p>From tropical beaches to bustling cities, find your perfect getaway with Play My Trip</p>
+                <button class="cta-btn" onclick="document.getElementById('destinations').scrollIntoView({behavior: 'smooth'})">
+                    Explore Destinations
+                </button>
+            </div>
+            <div class="hero-image">
+                <div class="hero-placeholder">🌍✈️🏖️</div>
+            </div>
+        </section>
+
+        <!-- Destinations Carousel -->
+        <section id="destinations" class="destinations-section">
+            <div class="section-content">
+                <h2>Popular Destinations</h2>
+                <div class="carousel-container">
+                    <button class="carousel-btn prev" id="prev-btn">‹</button>
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track" id="carousel-track">
+                            <div class="destination-card">
+                                <div class="destination-image paris"></div>
+                                <div class="destination-info">
+                                    <h3>Paris, France</h3>
+                                    <p>City of Love and Lights</p>
+                                    <span class="price">From $899</span>
+                                </div>
+                            </div>
+                            <div class="destination-card">
+                                <div class="destination-image tokyo"></div>
+                                <div class="destination-info">
+                                    <h3>Tokyo, Japan</h3>
+                                    <p>Modern meets Traditional</p>
+                                    <span class="price">From $1,299</span>
+                                </div>
+                            </div>
+                            <div class="destination-card">
+                                <div class="destination-image new-york"></div>
+                                <div class="destination-info">
+                                    <h3>New York, USA</h3>
+                                    <p>The City That Never Sleeps</p>
+                                    <span class="price">From $799</span>
+                                </div>
+                            </div>
+                            <div class="destination-card">
+                                <div class="destination-image london"></div>
+                                <div class="destination-info">
+                                    <h3>London, UK</h3>
+                                    <p>Royal Heritage & Culture</p>
+                                    <span class="price">From $699</span>
+                                </div>
+                            </div>
+                            <div class="destination-card">
+                                <div class="destination-image sydney"></div>
+                                <div class="destination-info">
+                                    <h3>Sydney, Australia</h3>
+                                    <p>Harbor Views & Beaches</p>
+                                    <span class="price">From $1,499</span>
+                                </div>
+                            </div>
+                            <div class="destination-card">
+                                <div class="destination-image bali"></div>
+                                <div class="destination-info">
+                                    <h3>Bali, Indonesia</h3>
+                                    <p>Tropical Paradise</p>
+                                    <span class="price">From $599</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="next-btn">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="section-content">
+                <h2>Why Choose Play My Trip?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Personalized Planning</h3>
+                        <p>Tailored itineraries based on your preferences and interests</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Expert Support</h3>
+                        <p>24/7 video chat support with travel experts</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Best Prices</h3>
+                        <p>Guaranteed best prices with our price match promise</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Secure Booking</h3>
+                        <p>Safe and secure payment processing</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Play My Trip</h3>
+                    <p>Your journey starts here</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#destinations">Destinations</a>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="#help">Help Center</a>
+                    <a href="#terms">Terms & Conditions</a>
+                    <a href="#privacy">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Customer Dashboard -->
+    <div id="customer-dashboard" class="page">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Play My Trip</h1>
+                <div class="user-info">
+                    <span>Welcome, <span id="customer-name">Customer</span></span>
+                    <button id="customer-logout" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="dashboard-tabs">
+                <button class="dash-tab-btn active" data-tab="book-trip">Book a Trip</button>
+                <button class="dash-tab-btn" data-tab="my-trips">My Trips</button>
+                <button class="dash-tab-btn" data-tab="support">Support</button>
+            </div>
+            
+            <!-- Book Trip Tab -->
+            <div id="book-trip" class="dashboard-content active">
+                <div class="booking-form">
+                    <h2>Book Your Next Adventure</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <select id="destination" required>
+                                <option value="">Select Destination</option>
+                                <option value="paris">Paris, France</option>
+                                <option value="tokyo">Tokyo, Japan</option>
+                                <option value="new-york">New York, USA</option>
+                                <option value="london">London, UK</option>
+                                <option value="sydney">Sydney, Australia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="travel-date">Travel Date</label>
+                            <input type="date" id="travel-date" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="return-date">Return Date</label>
+                            <input type="date" id="return-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="travelers">Travelers</label>
+                            <select id="travelers" required>
+                                <option value="1">1 Traveler</option>
+                                <option value="2">2 Travelers</option>
+                                <option value="3">3 Travelers</option>
+                                <option value="4">4+ Travelers</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" id="book-now" class="book-btn">Book Now</button>
+                </div>
+            </div>
+            
+            <!-- My Trips Tab -->
+            <div id="my-trips" class="dashboard-content">
+                <h2>My Booked Trips</h2>
+                <div id="trips-list" class="trips-list">
+                    <!-- Trips will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Support Tab -->
+            <div id="support" class="dashboard-content">
+                <h2>Need Help?</h2>
+                <div class="support-options">
+                    <div class="support-card">
+                        <h3>Video Chat with Agent</h3>
+                        <p>Connect with our travel experts for personalized assistance</p>
+                        <button id="start-video-chat" class="video-chat-btn">Start Video Chat</button>
+                    </div>
+                    <div class="support-card">
+                        <h3>FAQ</h3>
+                        <p>Find answers to commonly asked questions</p>
+                        <button class="support-btn">View FAQ</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Agent Dashboard -->
+    <div id="agent-dashboard" class="page">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Play My Trip - Agent Portal</h1>
+                <div class="user-info">
+                    <span>Welcome, <span id="agent-name">Agent</span></span>
+                    <button id="agent-logout" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="dashboard-main">
+            <div class="agent-status">
+                <h2>Agent Status</h2>
+                <div class="status-indicator">
+                    <span class="status-dot online"></span>
+                    <span>Online & Available</span>
+                </div>
+            </div>
+            
+            <!-- Incoming Call Notification -->
+            <div id="incoming-call" class="incoming-call-notification">
+                <div class="call-info">
+                    <h3>Incoming Call</h3>
+                    <p>Customer requesting video chat support</p>
+                    <div class="meeting-link">
+                        <label>Meeting Join Link:</label>
+                        <input type="text" value="https://meetings.webex.com/join/placeholder-meeting-id" readonly>
+                    </div>
+                </div>
+                <div class="call-actions">
+                    <button id="accept-call" class="accept-btn">Accept Call</button>
+                    <button id="decline-call" class="decline-btn">Decline</button>
+                </div>
+            </div>
+            
+            <div class="agent-stats">
+                <div class="stat-card">
+                    <h3>Today's Calls</h3>
+                    <span class="stat-number">12</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Customers</h3>
+                    <span class="stat-number">3</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Avg Response Time</h3>
+                    <span class="stat-number">2.3min</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content login-modal-content">
+            <div class="modal-header">
+                <h2>Login to Play My Trip</h2>
+                <button id="close-login-modal" class="close-btn">&times;</button>
+            </div>
+            <form id="unified-login" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <p class="demo-credentials">
+                    <strong>Demo Accounts:</strong><br>
+                    <span style="color: var(--eucalyptus);">Customers:</span> customer, customer1, customer2<br>
+                    <span style="color: var(--ultramine);">Agents:</span> agent, agent1, agent2<br>
+                    <span style="color: var(--velvet-grey);">Password: password123</span>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video Chat Modal -->
+    <div id="video-chat-modal" class="modal">
+        <div class="modal-content">
+            <div id="video-loader" class="video-loader">
+                <div class="loader-spinner"></div>
+                <p>Connecting to video chat...</p>
+            </div>
+            
+            <div id="video-chat-window" class="video-chat-window">
+                <div class="video-header">
+                    <h3>Video Chat Session</h3>
+                    <button id="close-video-chat" class="close-btn">&times;</button>
+                </div>
+                
+                <div class="video-container">
+                    <div class="video-area">
+                        <video id="remote-video" class="video-element" autoplay></video>
+                        <video id="local-video" class="video-element local" autoplay muted></video>
+                    </div>
+                </div>
+                
+                <div class="video-controls">
+                    <button id="mute-audio" class="control-btn">
+                        <span class="icon">🔊</span>
+                        <span class="label">Mute Audio</span>
+                    </button>
+                    <button id="mute-video" class="control-btn">
+                        <span class="icon">📹</span>
+                        <span class="label">Mute Video</span>
+                    </button>
+                    <button id="end-call" class="control-btn end-call">
+                        <span class="icon">📞</span>
+                        <span class="label">End Call</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/webex/umd/webex.min.js"></script>
+    <script src="app.js"></script>
+    <script src="sdk-impl.js"></script>
+</body>
+</html>
