@@ -80,36 +80,46 @@ class TravelApp {
     }
     
     setupEventListeners() {
+        // Helper function to safely add event listeners
+        const safeAddEventListener = (id, event, handler) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.addEventListener(event, handler);
+            } else {
+                console.warn(`Element with id '${id}' not found`);
+            }
+        };
+        
         // Login modal triggers
-        document.getElementById('login-trigger').addEventListener('click', () => {
+        safeAddEventListener('login-trigger', 'click', () => {
             this.showLoginModal();
         });
         
-        document.getElementById('close-login-modal').addEventListener('click', () => {
+        safeAddEventListener('close-login-modal', 'click', () => {
             this.hideLoginModal();
         });
         
         // Unified login form submission
-        document.getElementById('unified-login').addEventListener('submit', (e) => {
+        safeAddEventListener('unified-login', 'submit', (e) => {
             e.preventDefault();
             this.handleLogin();
         });
         
         // Carousel controls
-        document.getElementById('prev-btn').addEventListener('click', () => {
+        safeAddEventListener('prev-btn', 'click', () => {
             this.previousSlide();
         });
         
-        document.getElementById('next-btn').addEventListener('click', () => {
+        safeAddEventListener('next-btn', 'click', () => {
             this.nextSlide();
         });
         
         // Logout buttons
-        document.getElementById('customer-logout').addEventListener('click', () => {
+        safeAddEventListener('customer-logout', 'click', () => {
             this.logout();
         });
         
-        document.getElementById('agent-logout').addEventListener('click', () => {
+        safeAddEventListener('agent-logout', 'click', () => {
             this.logout();
         });
         
@@ -122,71 +132,87 @@ class TravelApp {
         });
         
         // Booking functionality
-        document.getElementById('book-now').addEventListener('click', () => {
+        safeAddEventListener('book-now', 'click', () => {
             this.bookTrip();
         });
         
         // Video chat functionality
-        document.getElementById('start-video-chat').addEventListener('click', () => {
+        safeAddEventListener('start-video-chat', 'click', () => {
             this.startVideoChat();
         });
         
         // Agent call handling
-        document.getElementById('accept-call').addEventListener('click', () => {
+        safeAddEventListener('accept-call', 'click', () => {
             this.acceptCall();
         });
         
-        document.getElementById('decline-call').addEventListener('click', () => {
+        safeAddEventListener('decline-call', 'click', () => {
             this.declineCall();
         });
         
         // Video chat controls
-        document.getElementById('close-video-chat').addEventListener('click', () => {
+        safeAddEventListener('close-video-chat', 'click', () => {
             this.endVideoChat();
         });
         
-        document.getElementById('mute-audio').addEventListener('click', () => {
+        safeAddEventListener('mute-audio', 'click', () => {
             this.toggleAudio();
         });
         
-        document.getElementById('mute-video').addEventListener('click', () => {
+        safeAddEventListener('mute-video', 'click', () => {
             this.toggleVideo();
         });
         
-        document.getElementById('end-call').addEventListener('click', () => {
+        safeAddEventListener('end-call', 'click', () => {
             this.endVideoChat();
         });
         
         // Modal close on outside click
-        document.getElementById('login-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'login-modal') {
-                this.hideLoginModal();
-            }
-        });
+        const loginModal = document.getElementById('login-modal');
+        if (loginModal) {
+            loginModal.addEventListener('click', (e) => {
+                if (e.target.id === 'login-modal') {
+                    this.hideLoginModal();
+                }
+            });
+        }
         
-        document.getElementById('video-chat-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'video-chat-modal') {
-                this.endVideoChat();
-            }
-        });
+        const videoModal = document.getElementById('video-chat-modal');
+        if (videoModal) {
+            videoModal.addEventListener('click', (e) => {
+                if (e.target.id === 'video-chat-modal') {
+                    this.endVideoChat();
+                }
+            });
+        }
     }
     
     // Login Modal Functions
     showLoginModal() {
-        document.getElementById('login-modal').classList.add('active');
+        const modal = document.getElementById('login-modal');
+        if (modal) {
+            modal.classList.add('active');
+        }
     }
     
     hideLoginModal() {
-        document.getElementById('login-modal').classList.remove('active');
+        const modal = document.getElementById('login-modal');
+        if (modal) {
+            modal.classList.remove('active');
+        }
         
         // Clear form
-        document.getElementById('username').value = '';
-        document.getElementById('password').value = '';
+        const usernameField = document.getElementById('username');
+        const passwordField = document.getElementById('password');
+        if (usernameField) usernameField.value = '';
+        if (passwordField) passwordField.value = '';
     }
     
     // Carousel Functions
     updateCarousel() {
         const track = document.getElementById('carousel-track');
+        if (!track) return;
+        
         const cardWidth = 300 + 24; // card width + gap
         const translateX = -this.carouselIndex * cardWidth;
         track.style.transform = `translateX(${translateX}px)`;
@@ -195,8 +221,8 @@ class TravelApp {
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         
-        prevBtn.disabled = this.carouselIndex === 0;
-        nextBtn.disabled = this.carouselIndex >= this.carouselItems - 3; // Show 3 cards at a time
+        if (prevBtn) prevBtn.disabled = this.carouselIndex === 0;
+        if (nextBtn) nextBtn.disabled = this.carouselIndex >= this.carouselItems - 3; // Show 3 cards at a time
     }
     
     nextSlide() {
@@ -381,12 +407,16 @@ class TravelApp {
     
     showIncomingCall() {
         const notification = document.getElementById('incoming-call');
-        notification.style.display = 'block';
+        if (notification) {
+            notification.style.display = 'block';
+        }
     }
     
     hideIncomingCall() {
         const notification = document.getElementById('incoming-call');
-        notification.style.display = 'none';
+        if (notification) {
+            notification.style.display = 'none';
+        }
     }
     
     acceptCall() {
@@ -531,18 +561,20 @@ class TravelApp {
 document.addEventListener('DOMContentLoaded', () => {
     const app = new TravelApp();
     
-    // Initialize carousel
-    app.updateCarousel();
-    
-    // Auto-scroll carousel every 5 seconds
-    setInterval(() => {
-        if (app.carouselIndex < app.carouselItems - 3) {
-            app.nextSlide();
-        } else {
-            app.carouselIndex = 0;
-            app.updateCarousel();
-        }
-    }, 5000);
+    // Initialize carousel if it exists
+    if (document.getElementById('carousel-track')) {
+        app.updateCarousel();
+        
+        // Auto-scroll carousel every 5 seconds
+        setInterval(() => {
+            if (app.carouselIndex < app.carouselItems - 3) {
+                app.nextSlide();
+            } else {
+                app.carouselIndex = 0;
+                app.updateCarousel();
+            }
+        }, 5000);
+    }
 });
 
 // Utility functions for date handling

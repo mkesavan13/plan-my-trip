@@ -265,14 +265,9 @@
                 <div class="call-info">
                     <h3>Incoming Call</h3>
                     <p>Customer requesting video chat support</p>
-                    <div class="meeting-link">
-                        <label>Meeting Join Link:</label>
-                        <input type="text" value="https://meetings.webex.com/join/placeholder-meeting-id" readonly>
-                    </div>
                 </div>
                 <div class="call-actions">
                     <button id="accept-call" class="accept-btn">Accept Call</button>
-                    <button id="decline-call" class="decline-btn">Decline</button>
                 </div>
             </div>
             
@@ -338,6 +333,7 @@
                     <div class="video-area">
                         <video id="remote-video" class="video-element" autoplay></video>
                         <video id="local-video" class="video-element local" autoplay muted></video>
+                        <audio id="remote-audio" class="audio-element remote" autoplay muted></audio>
                     </div>
                 </div>
                 
@@ -361,6 +357,7 @@
     
     <script src="https://unpkg.com/webex/umd/webex.min.js"></script>
     <script src="app.js"></script>
+    <script src="ui-utils.js"></script>
     <script src="sdk-impl.js"></script>
 </body>
 </html>
